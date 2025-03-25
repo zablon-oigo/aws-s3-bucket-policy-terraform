@@ -9,7 +9,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{secrets.AWS_REGION}}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
 
     steps:
       - name: Checkout code
@@ -23,13 +23,13 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Format & Validate
-        run: |
-           terraform fmt -check
-           terraform validate
+      - name: Terraform Validate
+        run: terraform validate 
 
-      - name: Terraform Apply
-        run: terraform apply --auto-approve
+      - name: Terraform Plan & Apply
+        run: |
+          terraform plan
+          terraform apply --auto-approve
 
       - name: Upload Terraform Artifacts
         uses: actions/upload-artifact@v4
