@@ -34,7 +34,7 @@ jobs:
           terraform apply --auto-approve
 
       - name: Upload Terraform Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: terraform-artifacts
           path: |
