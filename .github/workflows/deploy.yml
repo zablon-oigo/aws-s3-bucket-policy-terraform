@@ -28,10 +28,8 @@ jobs:
            terraform fmt -check
            terraform validate
 
-      - name: Terraform Plan & Apply
-        run: |
-          terraform plan
-          terraform apply --auto-approve
+      - name: Terraform Apply
+        run: terraform apply --auto-approve
 
       - name: Upload Terraform Artifacts
         uses: actions/upload-artifact@v4
