@@ -32,3 +32,15 @@ jobs:
         run: |
           terraform plan
           terraform apply --auto-approve
+
+      - name: Upload Terraform Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-artifacts
+          path: |
+            .terraform/
+            *.tfstate
+            *.tfplan
+            terraform.tfvars
+            plan.out
+            terraform.tfstate.backup
