@@ -6,4 +6,5 @@ variable "secret_key" {
 }
 variable "region" {
   description = "Region"
+  default = "us-east-1"
 }
